@@ -1,0 +1,35 @@
+﻿@model BookingOct.Models.Booking
+
+@{
+    ViewData["Title"] = "Detalii Rezervare";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Detalii Rezervare #@Model.Id</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Informații Cameră</h5>
+                    <hr />
+                    <p><strong>Nume:</strong> @Model.Room.Name</p>
+                    <p><strong>Capacitate:</strong> @Model.Room.Capacity persoane</p>
+                    <p><strong>Preț/Noapte:</strong> @Model.Room.Price $</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Perioadă și Utilizator</h5>
+                    <hr />
+                    <p><strong>Client (User ID):</strong> @Model.UserId</p>
+                    <p><strong>Data Check-in:</strong> @Model.StartDate.ToLongDateString()</p>
+                    <p><strong>Data Check-out:</strong> @Model.EndDate.ToLongDateString()</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Index" class="btn btn-secondary">Înapoi la listă</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Anulează Rezervarea</a>
+        </div>
+    </div>
+</div>

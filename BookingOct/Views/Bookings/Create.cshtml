@@ -1,0 +1,32 @@
+﻿@model BookingOct.Models.Booking
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app" class="container">
+    <form asp-action="Create">
+        <div class="form-group">
+            <label>Cameră</label>
+            <select asp-for="RoomId" class="form-control" asp-items="ViewBag.RoomId"></select>
+        </div>
+        <div class="row">
+            <div class="col"><input type="date" asp-for="StartDate" class="form-control" v-model="start" /></div>
+            <div class="col"><input type="date" asp-for="EndDate" class="form-control" v-model="end" /></div>
+        </div>
+        <div v-if="error" class="text-danger">{{error}}</div>
+        <button type="submit" class="btn btn-success mt-3">Rezervă</button>
+    </form>
+</div>
+
+<script>
+    Vue.createApp({
+        data() { return { start: '', end: '', error: '' } },
+        watch: {
+            end() { this.validate(); },
+            start() { this.validate(); }
+        },
+        methods: {
+            validate() {
+                this.error = (new Date(this.start) >= new Date(this.end)) ? "Data de final trebuie să fie după start!" : "";
+            }
+        }
+    }).mount('#app')
+</script>

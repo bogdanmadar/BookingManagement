@@ -1,0 +1,29 @@
+﻿@model BookingOct.Models.Room
+
+<div class="container mt-4">
+    <h2>Detalii @Model.Name</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <p><strong>Capacitate:</strong> @Model.Capacity persoane</p>
+            <p><strong>Preț:</strong> @Model.Price RON</p>
+            <a asp-controller="Bookings" asp-action="Create" class="btn btn-success w-100">Rezervă acum</a>
+        </div>
+        <div class="col-md-8">
+            <h5>Calendar Ocupare</h5>
+            <div id='calendar' style="background: white; padding: 10px; border-radius: 8px;"></div>
+        </div>
+    </div>
+</div>
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'ro',
+            events: '/Bookings/GetCalendarData?roomId=@Model.Id'
+        });
+        calendar.render();
+    });
+</script>

@@ -1,0 +1,32 @@
+﻿@model BookingOct.Models.Room
+
+<div class="container mt-4">
+    <h4>Adaugă Cameră Nouă</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group mb-3">
+                    <label class="control-label">Nume Cameră</label>
+                    <input asp-for="Name" class="form-control" placeholder="ex: Camera 101" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="control-label">Capacitate</label>
+                    <input asp-for="Capacity" class="form-control" type="number" />
+                    <span asp-validation-for="Capacity" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="control-label">Preț pe noapte</label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Salvează" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Înapoi la listă</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
