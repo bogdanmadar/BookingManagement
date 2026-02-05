@@ -45,7 +45,6 @@ namespace BookingOct.Controllers
             return View(room);
         }
 
-        // Detalii cameră + Calendarul de rezervări (Cerința d)
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -58,7 +57,6 @@ namespace BookingOct.Controllers
             return View(room);
         }
 
-        // Editare cameră
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();

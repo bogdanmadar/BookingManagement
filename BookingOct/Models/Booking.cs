@@ -9,7 +9,7 @@ namespace BookingOct.Models
         [Required]
         public int RoomId { get; set; }
         public virtual Room Room { get; set; }
-        public string UserId { get; set; } // Identificator pentru cerința (e)
+        public string UserId { get; set; }
 
         [Required, DataType(DataType.Date)]
         public DateTime StartDate { get; set; }

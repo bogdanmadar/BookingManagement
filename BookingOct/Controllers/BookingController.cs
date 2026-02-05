@@ -33,7 +33,6 @@ namespace BookingOct.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Booking booking)
         {
-            // Cerința f): Validare disponibilitate
             bool conflict = await _context.Bookings.AnyAsync(b =>
                 b.RoomId == booking.RoomId &&
                 booking.StartDate < b.EndDate &&
